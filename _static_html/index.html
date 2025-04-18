@@ -1,1170 +1,847 @@
-/* 
-* Python Faulthandler Documentation - Enhanced Style Sheet
-* A modern, interactive design for technical documentation
-*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Faulthandler Documentation</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts - Inter for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-theme">
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
 
-/* === Base Styles and Variables === */
-:root {
-    /* Color Variables - Light Theme */
-    --primary-color: #3776ab;       /* Python blue */
-    --primary-dark: #306998;        /* Darker Python blue */
-    --secondary-color: #ffd43b;     /* Python yellow */
-    --secondary-dark: #f6cc38;      /* Darker Python yellow */
-    --accent-color: #4CAF50;        /* Green for success indicators */
-    --warning-color: #ff9800;       /* Orange for warnings */
-    --danger-color: #e53935;        /* Red for errors */
-    --text-color: #333333;
-    --text-secondary: #666666;
-    --text-muted: #888888;
-    --background-color: #ffffff;
-    --sidebar-bg: #f8f9fa;
-    --card-bg: #ffffff;
-    --border-color: #e9ecef;
-    --code-bg: #f5f7f9;
-    --hover-bg: rgba(55, 118, 171, 0.08);
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg version="1.0" id="python-logo" width="92.070236pt" height="101.00108pt" viewBox="0 0 92.070236 101.00108">
+                        <defs>
+                            <linearGradient id="linearGradient4671">
+                                <stop style="stop-color:#ffd43b;stop-opacity:1;" offset="0" id="stop4673" />
+                                <stop style="stop-color:#ffe873;stop-opacity:1" offset="1" id="stop4675" />
+                            </linearGradient>
+                            <linearGradient id="linearGradient4689">
+                                <stop style="stop-color:#5a9fd4;stop-opacity:1;" offset="0" id="stop4691" />
+                                <stop style="stop-color:#306998;stop-opacity:1;" offset="1" id="stop4693" />
+                            </linearGradient>
+                            <linearGradient x1="26.648937" y1="20.603781" x2="135.66525" y2="114.39767" id="gradient1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.562541,0,0,0.567972,-14.99112,-11.702371)">
+                                <stop style="stop-color:#5a9fd4;stop-opacity:1;" offset="0"/>
+                                <stop style="stop-color:#306998;stop-opacity:1;" offset="1"/>
+                            </linearGradient>
+                            <linearGradient x1="150.96111" y1="192.35176" x2="112.03144" y2="137.27299" id="gradient2" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.562541,0,0,0.567972,-14.99112,-11.702371)">
+                                <stop style="stop-color:#ffd43b;stop-opacity:1;" offset="0"/>
+                                <stop style="stop-color:#ffe873;stop-opacity:1" offset="1"/>
+                            </linearGradient>
+                        </defs>
+                        <path style="fill:url(#gradient1);fill-opacity:1" d="M 54.918785,9.1927389e-4 C 50.335132,0.02221727 45.957846,0.41313697 42.106285,1.0946693 30.760069,3.0991731 28.700036,7.2947714 28.700035,15.032169 v 10.21875 h 26.8125 v 3.40625 h -26.8125 -10.0625 c -7.792459,0 -14.6157588,4.683717 -16.7499998,13.59375 -2.46181998,10.212966 -2.57101508,16.586023 0,27.25 1.9059283,7.937852 6.4575432,13.593748 14.2499998,13.59375 h 9.21875 v -12.25 c 0,-8.849902 7.657144,-16.656248 16.75,-16.65625 h 26.78125 c 7.454951,0 13.406253,-6.138164 13.40625,-13.625 v -25.53125 c 0,-7.2663386 -6.12998,-12.7247771 -13.40625,-13.9374997 C 64.281548,0.32794397 59.502438,-0.02037903 54.918785,9.1927389e-4 Z m -14.5,8.21875012611 c 2.769547,0 5.03125,2.2986456 5.03125,5.1249996 -2e-6,2.816336 -2.261703,5.09375 -5.03125,5.09375 -2.779476,-1e-6 -5.03125,-2.277415 -5.03125,-5.09375 -10e-7,-2.826353 2.251774,-5.1249996 5.03125,-5.1249996 z"/>
+                        <path style="fill:url(#gradient2);fill-opacity:1" d="m 85.637535,28.657169 v 11.90625 c 0,9.230755 -7.825895,16.999999 -16.75,17 h -26.78125 c -7.335833,0 -13.406249,6.278483 -13.40625,13.625 v 25.531247 c 0,7.266344 6.318588,11.540324 13.40625,13.625004 8.487331,2.49561 16.626237,2.94663 26.78125,0 6.750155,-1.95439 13.406253,-5.88761 13.40625,-13.625004 V 86.500919 h -26.78125 v -3.40625 h 26.78125 13.406254 c 7.792461,0 10.696251,-5.435408 13.406241,-13.59375 2.79933,-8.398886 2.68022,-16.475776 0,-27.25 -1.92578,-7.757441 -5.60387,-13.59375 -13.406241,-13.59375 z m -15.0625,64.65625 c 2.779478,3e-6 5.03125,2.277417 5.03125,5.093747 -2e-6,2.826354 -2.251775,5.125004 -5.03125,5.125004 -2.76955,0 -5.03125,-2.29865 -5.03125,-5.125004 2e-6,-2.81633 2.261697,-5.093747 5.03125,-5.093747 z"/>
+                    </svg>
+                </div>
+                <h2>Faulthandler</h2>
+                <p class="version">Python Module v3.12</p>
+            </div>
+            
+            <!-- Search Box -->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search docs...">
+                <button id="search-clear" class="search-clear" aria-label="Clear search">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul id="nav-links">
+                    <li><a href="#introduction" class="active"><i class="fas fa-home"></i> Introduction</a></li>
+                    <li><a href="#getting-started"><i class="fas fa-play"></i> Getting Started</a></li>
+                    <li>
+                        <a href="#basic-usage" class="has-submenu"><i class="fas fa-code"></i> Basic Usage</a>
+                        <ul class="submenu">
+                            <li><a href="#enable-functionality">Enable Functionality</a></li>
+                            <li><a href="#traceback-output">Traceback Output</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#advanced-usage" class="has-submenu"><i class="fas fa-cogs"></i> Advanced Usage</a>
+                        <ul class="submenu">
+                            <li><a href="#file-output">File Output</a></li>
+                            <li><a href="#timeout-handlers">Timeout Handlers</a></li>
+                            <li><a href="#signal-handlers">Signal Handlers</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#common-issues"><i class="fas fa-exclamation-triangle"></i> Common Issues</a></li>
+                    <li><a href="#api-reference"><i class="fas fa-book"></i> API Reference</a></li>
+                    <li><a href="#resources"><i class="fas fa-external-link-alt"></i> Resources</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>Updated: April 2025</p>
+                <div class="social-links">
+                    <a href="https://github.com/python/cpython" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/ThePSF" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.python.org/community/" target="_blank" aria-label="Python Community"><i class="fas fa-users"></i></a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Table of Contents (visible on mobile) -->
+            <div class="mobile-toc-toggle">
+                <button id="show-toc">
+                    <i class="fas fa-bars"></i> Table of Contents
+                </button>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <section id="introduction" class="content-section">
+                <div class="section-heading">
+                    <h1>Python Faulthandler Documentation</h1>
+                    <div class="metadata">
+                        <span><i class="fas fa-clock"></i> 5 min read</span>
+                        <span><i class="fas fa-code-branch"></i> Python 3.3+</span>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Note:</strong> This documentation is for the Python faulthandler module available in Python 3.3 and later versions.
+                    </div>
+                </div>
+                
+                <div class="intro-card">
+                    <p>The Python faulthandler module is a powerful debugging tool that helps developers diagnose and troubleshoot critical errors in Python applications. This module contains functions to dump Python tracebacks explicitly when a program crashes, times out, or receives specific signals.</p>
+                </div>
+
+                <p>Critical errors in Python applications can be difficult to diagnose, especially when they result from segmentation faults, memory access violations, or deadlocks. The faulthandler module addresses these challenges by providing a way to obtain Python tracebacks even in situations where traditional debugging tools might fail.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-bug"></i></div>
+                        <h3>Crash Diagnostics</h3>
+                        <p>Get Python tracebacks for segmentation faults and other fatal errors</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                        <h3>Timeout Detection</h3>
+                        <p>Dump tracebacks after timeouts to diagnose deadlocks</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                        <h3>Signal Handling</h3>
+                        <p>Register custom signal handlers to generate diagnostic information</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="getting-started" class="content-section">
+                <h2>Getting Started</h2>
+                <p>The faulthandler module is part of the Python standard library since version 3.3, so no installation is required. You can simply import it in your code:</p>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>Basic setup</span>
+                        <button class="copy-button" data-clipboard-target="#code1">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <pre><code id="code1">import faulthandler
+
+# Enable the fault handler
+faulthandler.enable()</code></pre>
+                </div>
+
+                <p>This basic setup will cause Python to display a traceback when your program crashes due to:</p>
+                <ul class="feature-list">
+                    <li><span class="bullet-icon"><i class="fas fa-check-circle"></i></span> Segmentation faults (SIGSEGV)</li>
+                    <li><span class="bullet-icon"><i class="fas fa-check-circle"></i></span> Floating point exceptions (SIGFPE)</li>
+                    <li><span class="bullet-icon"><i class="fas fa-check-circle"></i></span> Bus errors (SIGBUS)</li>
+                    <li><span class="bullet-icon"><i class="fas fa-check-circle"></i></span> Illegal instructions (SIGILL)</li>
+                    <li><span class="bullet-icon"><i class="fas fa-check-circle"></i></span> Abort signals (SIGABRT)</li>
+                </ul>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header">
+                        <h3>Environment Variable Setup</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="collapsible-content">
+                        <p>You can also enable faulthandler globally without modifying your code by setting the <code>PYTHONFAULTHANDLER</code> environment variable:</p>
+                        
+                        <div class="tabs">
+                            <div class="tab-header">
+                                <button class="tab-button active" data-tab="unix">Unix/Linux/macOS</button>
+                                <button class="tab-button" data-tab="windows">Windows CMD</button>
+                                <button class="tab-button" data-tab="powershell">PowerShell</button>
+                            </div>
+                            <div class="tab-content active" id="unix">
+                                <pre><code>export PYTHONFAULTHANDLER=1
+python your_script.py</code></pre>
+                            </div>
+                            <div class="tab-content" id="windows">
+                                <pre><code>set PYTHONFAULTHANDLER=1
+python your_script.py</code></pre>
+                            </div>
+                            <div class="tab-content" id="powershell">
+                                <pre><code>$env:PYTHONFAULTHANDLER=1
+python your_script.py</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="basic-usage" class="content-section">
+                <h2>Basic Usage</h2>
+                <p>The most common way to use faulthandler is to enable it at the beginning of your program to help diagnose crashes:</p>
+                
+                <div id="enable-functionality" class="subsection">
+                    <h3>Enable Functionality</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Basic usage example</span>
+                            <button class="copy-button" data-clipboard-target="#code2">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code id="code2">import faulthandler
+
+# Enable the fault handler
+faulthandler.enable()
+
+# Your potentially problematic code here
+def cause_segfault():
+    # This would typically cause a segmentation fault
+    # (Example only - don't run this directly)
+    import ctypes
+    ctypes.string_at(0)</code></pre>
+                    </div>
+                </div>
+
+                <div id="traceback-output" class="subsection">
+                    <h3>Traceback Output</h3>
+                    <p>When your program encounters a fatal error, faulthandler will print a traceback to stderr before the program terminates. Here's an example of what the output might look like:</p>
+                    
+                    <div class="example-output">
+                        <pre>Fatal Python error: Segmentation fault
+
+Current thread 0x00007f7a3c39e700 (most recent call first):
+  File "example.py", line 8 in cause_segfault
+  File "example.py", line 12 in &lt;module&gt;
+
+Segmentation fault</pre>
+                    </div>
+                    
+                    <p>This traceback shows you exactly where in your code the fatal error occurred, making it much easier to diagnose the problem.</p>
+                </div>
+            </section>
+
+            <section id="advanced-usage" class="content-section">
+                <h2>Advanced Usage</h2>
+                <p>For more complex scenarios, faulthandler offers additional features to help with debugging:</p>
+
+                <div id="file-output" class="subsection">
+                    <h3>Writing to a File</h3>
+                    <p>You can direct faulthandler output to a file instead of stderr, which is useful for background processes or services:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>File output example</span>
+                            <button class="copy-button" data-clipboard-target="#code3">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code id="code3"># Writing fault tracebacks to a file
+import faulthandler
+
+# Open a file in write mode
+with open('fault_log.txt', 'w') as f:
+    # Enable faulthandler with output directed to the file
+    faulthandler.enable(file=f)
     
-    /* Spacing Variables */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
+    # Your application code here</code></pre>
+                    </div>
+                </div>
+
+                <div id="timeout-handlers" class="subsection">
+                    <h3>Using Timeouts</h3>
+                    <p>The timeout feature is particularly useful for diagnosing deadlocks or code that hangs:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Timeout handler example</span>
+                            <button class="copy-button" data-clipboard-target="#code4">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code id="code4"># Setting up a timeout handler (useful for deadlocks)
+import faulthandler
+import time
+
+faulthandler.enable()
+
+# Dump traceback after 30 seconds, repeat every 5 seconds
+faulthandler.dump_traceback_later(timeout=30, repeat=True, file=None, exit=False)
+
+# Simulate a deadlock or long-running process
+def simulate_deadlock():
+    print("Simulating a deadlock...")
+    time.sleep(60)  # This will trigger our timeout handler
+
+simulate_deadlock()
+
+# Important: cancel the handler when you're done
+faulthandler.cancel_dump_traceback_later()</code></pre>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>Note:</strong> The timeout feature uses the SIGALRM signal which is not available on Windows. For Windows systems, consider using threading.Timer as an alternative.
+                        </div>
+                    </div>
+                </div>
+
+                <div id="signal-handlers" class="subsection">
+                    <h3>Signal Handlers</h3>
+                    <p>You can register custom signal handlers to dump tracebacks on demand:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Signal handler example</span>
+                            <button class="copy-button" data-clipboard-target="#code5">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code id="code5"># Register a user signal to trigger traceback
+import faulthandler
+import signal
+
+# Enable the fault handler
+faulthandler.enable()
+
+# Register the SIGUSR1 signal to dump the traceback
+faulthandler.register(signal.SIGUSR1)
+
+# Now you can send SIGUSR1 to your Python process
+# to get a traceback dumped to stderr
+# On Unix: kill -SIGUSR1 pid_of_python_process
+
+print(f"Process ID: {os.getpid()}")
+# Your long-running application code here
+while True:
+    time.sleep(1)</code></pre>
+                    </div>
+                    
+                    <div class="collapsible-section">
+                        <div class="collapsible-header">
+                            <h4>Real-world Use Case: Web Application Debugging</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="collapsible-content">
+                            <p>In a production web application, you might want to enable faulthandler to catch crashes without impacting normal operation:</p>
+                            
+                            <div class="code-block">
+                                <pre><code>import faulthandler
+import logging
+import os
+from datetime import datetime
+
+# Create a directory for crash logs if it doesn't exist
+os.makedirs('crash_logs', exist_ok=True)
+
+# Create a crash log file with timestamp
+timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+crash_log_path = f'crash_logs/crash_{timestamp}.log'
+
+try:
+    # Use a dedicated file for fault tracebacks
+    crash_file = open(crash_log_path, 'w')
     
-    /* Layout Variables */
-    --sidebar-width: 280px;
-    --border-radius: 8px;
-    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    --box-shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --transition-fast: all 0.2s ease;
-    --transition-normal: all 0.3s ease;
-}
-
-/* Dark Theme Colors */
-.dark-theme {
-    --primary-color: #5a9fd4;       /* Lighter Python blue for dark mode */
-    --primary-dark: #4d8cbf;
-    --secondary-color: #ffe873;     /* Lighter Python yellow for dark mode */
-    --secondary-dark: #f9dc5c;
-    --text-color: #e6e6e6;
-    --text-secondary: #c2c2c2;
-    --text-muted: #999999;
-    --background-color: #121212;
-    --sidebar-bg: #1e1e1e;
-    --card-bg: #2d2d2d;
-    --border-color: #3d3d3d;
-    --code-bg: #2a2a2a;
-    --hover-bg: rgba(90, 159, 212, 0.15);
-}
-
-/* Reset and Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: var(--transition-fast);
-}
-
-a:hover {
-    color: var(--primary-dark);
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin-bottom: var(--spacing-sm);
-    font-weight: 600;
-    line-height: 1.3;
-    color: var(--text-color);
-}
-
-h1 {
-    font-size: 2.25rem;
-    margin-bottom: var(--spacing-md);
-}
-
-h2 {
-    font-size: 1.75rem;
-    margin-top: var(--spacing-lg);
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-xs);
-    border-bottom: 1px solid var(--border-color);
-}
-
-h3 {
-    font-size: 1.4rem;
-    margin-top: var(--spacing-md);
-    color: var(--primary-color);
-}
-
-h4 {
-    font-size: 1.15rem;
-    margin-top: var(--spacing-sm);
-}
-
-p {
-    margin-bottom: var(--spacing-md);
-    color: var(--text-color);
-}
-
-ul, ol {
-    margin-bottom: var(--spacing-md);
-    padding-left: var(--spacing-lg);
-}
-
-li {
-    margin-bottom: var(--spacing-xs);
-}
-
-code {
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-    background-color: var(--code-bg);
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-size: 0.9em;
-    color: var(--primary-color);
-}
-
-/* === Layout Styles === */
-.container {
-    display: flex;
-    min-height: 100vh;
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    cursor: pointer;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition-fast);
-}
-
-.theme-toggle:hover {
-    background-color: var(--primary-dark);
-    transform: scale(1.05);
-}
-
-.theme-toggle .fa-sun {
-    display: none;
-}
-
-.dark-theme .theme-toggle .fa-moon {
-    display: none;
-}
-
-.dark-theme .theme-toggle .fa-sun {
-    display: block;
-}
-
-/* Back to Top Button */
-.back-to-top {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    cursor: pointer;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--box-shadow);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: var(--transition-normal);
-    pointer-events: none;
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.back-to-top:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-5px);
-}
-
-/* Progress Bar */
-.progress-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    z-index: 1000;
-}
-
-.progress-bar {
-    height: 4px;
-    background-color: var(--primary-color);
-    width: 0%;
-    transition: width 0.2s ease;
-}
-
-/* Sidebar Styles */
-.sidebar {
-    width: var(--sidebar-width);
-    background-color: var(--sidebar-bg);
-    box-shadow: var(--box-shadow);
-    position: fixed;
-    height: 100vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    transition: var(--transition-normal), transform 0.3s ease;
-    z-index: 100;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--sidebar-bg);
-}
-
-.sidebar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: var(--sidebar-bg);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background-color: var(--primary-color);
-    border-radius: 6px;
-}
-
-.sidebar-header {
-    padding: var(--spacing-md);
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.logo {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--spacing-xs);
-    overflow: visible;
-}
-
-.logo svg {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-.logo img {
-    max-width: 100%;
-    height: auto;
-}
-
-.sidebar-header h2 {
-    margin: var(--spacing-xs) 0;
-    border-bottom: none;
-    padding-bottom: 0;
-    color: var(--primary-color);
-    font-size: 1.5rem;
-}
-
-.version {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-/* Search Box */
-.search-container {
-    padding: var(--spacing-sm) var(--spacing-md);
-    position: relative;
-    border-bottom: 1px solid var(--border-color);
-}
-
-#search-input {
-    width: 100%;
-    padding: 0.6rem 2rem 0.6rem 0.8rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    background-color: var(--background-color);
-    color: var(--text-color);
-    font-size: 0.9rem;
-    transition: var(--transition-fast);
-}
-
-#search-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(55, 118, 171, 0.1);
-}
-
-.search-clear {
-    position: absolute;
-    right: calc(var(--spacing-md) + 5px);
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    display: none;
-}
-
-.search-clear:hover {
-    color: var(--text-color);
-}
-
-/* Sidebar Navigation */
-.sidebar-nav {
-    flex: 1;
-    padding: var(--spacing-md) 0;
-}
-
-.sidebar-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar-nav li {
-    margin: 0;
-}
-
-.sidebar-nav a {
-    display: flex;
-    align-items: center;
-    padding: 0.7rem var(--spacing-md);
-    color: var(--text-color);
-    border-left: 3px solid transparent;
-    transition: var(--transition-fast);
-    font-weight: 500;
-}
-
-.sidebar-nav a:hover,
-.sidebar-nav a.active {
-    background-color: var(--hover-bg);
-    border-left-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-.sidebar-nav a i {
-    margin-right: 10px;
-    width: 18px;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-/* Submenu Styling */
-.submenu {
-    padding-left: 1.5rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-.submenu a {
-    padding: 0.5rem var(--spacing-md);
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-.has-submenu {
-    position: relative;
-}
-
-.has-submenu::after {
-    content: '\f078'; /* fa-chevron-down */
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    position: absolute;
-    right: var(--spacing-md);
-    transition: transform 0.3s ease;
-}
-
-.has-submenu.active::after {
-    transform: rotate(180deg);
-}
-
-/* Sidebar Footer */
-.sidebar-footer {
-    padding: var(--spacing-md);
-    border-top: 1px solid var(--border-color);
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    text-align: center;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--spacing-xs);
-}
-
-.social-links a {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: var(--hover-bg);
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 5px;
-    transition: var(--transition-fast);
-}
-
-.social-links a:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Main Content Styles */
-.content {
-    flex: 1;
-    margin-left: var(--sidebar-width);
-    padding: var(--spacing-lg) var(--spacing-xl);
-    max-width: 900px;
-    transition: var(--transition-normal);
-}
-
-.content-section {
-    margin-bottom: var(--spacing-xl);
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.section-heading {
-    margin-bottom: var(--spacing-md);
-}
-
-.metadata {
-    display: flex;
-    gap: var(--spacing-md);
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin: var(--spacing-xs) 0 var(--spacing-md);
-}
-
-.metadata i {
-    margin-right: 5px;
-}
-
-.subsection {
-    margin: var(--spacing-md) 0;
-    padding-left: var(--spacing-md);
-    border-left: 3px solid var(--border-color);
-}
-
-/* Mobile TOC Toggle */
-.mobile-toc-toggle {
-    display: none;
-    margin-bottom: var(--spacing-md);
-}
-
-#show-toc {
-    background-color: var(--sidebar-bg);
-    border: 1px solid var(--border-color);
-    padding: 0.7rem var(--spacing-md);
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-weight: 500;
-    color: var(--text-color);
-    display: flex;
-    align-items: center;
-    width: 100%;
-    transition: var(--transition-fast);
-}
-
-#show-toc i {
-    margin-right: 10px;
-}
-
-#show-toc:hover {
-    background-color: var(--hover-bg);
-    color: var(--primary-color);
-}
-
-/* Component Styles */
-.alert {
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius);
-    margin-bottom: var(--spacing-md);
-    display: flex;
-    align-items: flex-start;
-}
-
-.alert i {
-    margin-right: var(--spacing-sm);
-    font-size: 1.2rem;
-    margin-top: 2px;
-}
-
-.alert-info {
-    background-color: rgba(55, 118, 171, 0.1);
-    border-left: 4px solid var(--primary-color);
-    color: var(--primary-color);
-}
-
-.alert-warning {
-    background-color: rgba(255, 152, 0, 0.1);
-    border-left: 4px solid var(--warning-color);
-    color: var(--warning-color);
-}
-
-.intro-card {
-    background-color: rgba(55, 118, 171, 0.05);
-    border-left: 4px solid var(--primary-color);
-    padding: var(--spacing-md);
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    margin-bottom: var(--spacing-md);
-    box-shadow: var(--box-shadow);
-}
-
-.intro-card p {
-    margin-bottom: 0;
-}
-
-/* Feature Grid and Cards */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: var(--spacing-md);
-    margin: var(--spacing-md) 0 var(--spacing-lg);
-}
-
-.feature-card {
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: var(--spacing-md);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition-fast);
-    border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow-hover);
-}
-
-.feature-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: rgba(55, 118, 171, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--spacing-sm);
-    color: var(--primary-color);
-    font-size: 1.5rem;
-}
-
-.feature-card h3 {
-    margin-top: var(--spacing-xs);
-    font-size: 1.1rem;
-}
-
-.feature-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 0;
-}
-
-/* Feature List */
-.feature-list {
-    list-style: none;
-    padding: 0;
-}
-
-.feature-list li {
-    display: flex;
-    align-items: center;
-    margin-bottom: var(--spacing-xs);
-}
-
-.bullet-icon {
-    margin-right: var(--spacing-sm);
-    color: var(--accent-color);
-}
-
-/* Code Block */
-.code-block {
-    background-color: var(--code-bg);
-    border-radius: var(--border-radius);
-    margin: var(--spacing-md) 0;
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-}
-
-.code-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem var(--spacing-sm);
-    background-color: rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-.copy-button {
-    background-color: transparent;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 0.8rem;
-    padding: 0.3rem 0.5rem;
-    border-radius: 4px;
-    transition: var(--transition-fast);
-}
-
-.copy-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--primary-color);
-}
-
-.copy-button i {
-    margin-right: 5px;
-}
-
-.code-block pre {
-    margin: 0;
-    padding: var(--spacing-md);
-    overflow-x: auto;
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-.code-block code {
-    background-color: transparent;
-    padding: 0;
-    color: inherit;
-}
-
-.example-output {
-    background-color: #2d2d2d;
-    color: #e6e6e6;
-    border-radius: var(--border-radius);
-    padding: var(--spacing-md);
-    margin: var(--spacing-md) 0;
-    overflow-x: auto;
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-    font-size: 0.9rem;
-}
-
-.dark-theme .example-output {
-    background-color: #1a1a1a;
-}
-
-/* Collapsible Sections */
-.collapsible-section {
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    margin: var(--spacing-md) 0;
-    overflow: hidden;
-}
-
-.collapsible-header {
-    padding: var(--spacing-sm);
-    background-color: var(--sidebar-bg);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: var(--transition-fast);
-}
-
-.collapsible-header:hover {
-    background-color: var(--hover-bg);
-}
-
-.collapsible-header h3, 
-.collapsible-header h4 {
-    margin: 0;
-    font-size: 1.1rem;
-}
-
-.collapsible-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-.collapsible-content > div {
-    padding: var(--spacing-md);
-}
-
-/* Tabs */
-.tabs {
-    margin: var(--spacing-md) 0;
-}
-
-.tab-header {
-    display: flex;
-    border-bottom: 1px solid var(--border-color);
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-
-.tab-header::-webkit-scrollbar {
-    display: none;
-}
-
-.tab-button {
-    padding: 0.7rem var(--spacing-md);
-    background: none;
-    border: none;
-    border-bottom: 3px solid transparent;
-    cursor: pointer;
-    font-weight: 500;
-    white-space: nowrap;
-    color: var(--text-secondary);
-    transition: var(--transition-fast);
-}
-
-.tab-button.active {
-    color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
-}
-
-.tab-button:hover:not(.active) {
-    color: var(--text-color);
-    background-color: var(--hover-bg);
-}
-
-.tab-content {
-    display: none;
-    padding: var(--spacing-md) 0;
-    animation: fadeIn 0.3s ease;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-/* Issue Cards */
-.issue-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    margin-bottom: var(--spacing-md);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-}
-
-.issue-header {
-    padding: var(--spacing-sm) var(--spacing-md);
-    background-color: rgba(229, 57, 53, 0.1);
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.dark-theme .issue-header {
-    background-color: rgba(229, 57, 53, 0.2);
-}
-
-.issue-header i {
-    color: var(--danger-color);
-    margin-right: var(--spacing-sm);
-    font-size: 1.2rem;
-}
-
-.issue-header h3 {
-    margin: 0;
-    color: var(--danger-color);
-    font-size: 1.1rem;
-}
-
-.issue-content {
-    padding: var(--spacing-md);
-}
-
-.solution {
-    background-color: rgba(76, 175, 80, 0.05);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius);
-    margin-top: var(--spacing-sm);
-}
-
-.dark-theme .solution {
-    background-color: rgba(76, 175, 80, 0.1);
-}
-
-.solution h4 {
-    color: var(--accent-color);
-    margin-top: 0;
-    font-size: 1rem;
-}
-
-.solution pre {
-    margin: var(--spacing-xs) 0 0;
-}
-
-/* API Table */
-.table-container {
-    overflow-x: auto;
-    margin: var(--spacing-md) 0;
-}
-
-.api-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-}
-
-.api-table th, 
-.api-table td {
-    padding: var(--spacing-sm);
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.api-table th {
-    font-weight: 600;
-    background-color: var(--sidebar-bg);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.api-table tr:last-child td {
-    border-bottom: none;
-}
-
-.api-table td {
-    vertical-align: top;
-}
-
-.api-table code {
-    background-color: var(--code-bg);
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-}
-
-.api-table td ul {
-    margin-bottom: 0;
-    padding-left: 1.2rem;
-}
-
-/* Resource Cards */
-.resources-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--spacing-md);
-    margin: var(--spacing-md) 0;
-}
-
-.resource-card {
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: var(--spacing-md);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition-fast);
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--border-color);
-}
-
-.resource-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow-hover);
-}
-
-.resource-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: rgba(55, 118, 171, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--spacing-sm);
-    color: var(--primary-color);
-    font-size: 1.2rem;
-}
-
-.resource-card h3 {
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: var(--spacing-xs);
-}
-
-.resource-card p {
-    flex-grow: 1;
-    margin-bottom: var(--spacing-md);
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-}
-
-.resource-link {
-    display: inline-flex;
-    align-items: center;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.6rem 1rem;
-    border-radius: var(--border-radius);
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: var(--transition-fast);
-    align-self: flex-start;
-}
-
-.resource-link:hover {
-    background-color: var(--primary-dark);
-    color: white;
-    transform: translateY(-2px);
-}
-
-.resource-link i {
-    margin-left: 6px;
-    font-size: 0.8rem;
-}
-
-/* Feedback Section */
-.feedback-section {
-    margin-top: var(--spacing-xl);
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-}
-
-.feedback-buttons {
-    display: flex;
-    justify-content: center;
-    margin: var(--spacing-sm) 0;
-    gap: var(--spacing-sm);
-}
-
-.feedback-button {
-    padding: 0.6rem 1.2rem;
-    border: 1px solid var(--border-color);
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-weight: 500;
-    transition: var(--transition-fast);
-    display: flex;
-    align-items: center;
-}
-
-.feedback-button i {
-    margin-right: 8px;
-}
-
-#feedback-yes {
-    color: var(--accent-color);
-}
-
-#feedback-yes:hover {
-    background-color: rgba(76, 175, 80, 0.1);
-    border-color: var(--accent-color);
-}
-
-#feedback-no {
-    color: var(--danger-color);
-}
-
-#feedback-no:hover {
-    background-color: rgba(229, 57, 53, 0.1);
-    border-color: var(--danger-color);
-}
-
-.feedback-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: var(--spacing-md);
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    transition: var(--transition-fast);
-}
-
-.feedback-form textarea {
-    width: 100%;
-    height: 100px;
-    padding: var(--spacing-sm);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    background-color: var(--background-color);
-    color: var(--text-color);
-    resize: none;
-    margin-bottom: var(--spacing-sm);
-}
-
-.submit-feedback {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-weight: 500;
-    transition: var(--transition-fast);
-}
-
-.submit-feedback:hover {
-    background-color: var(--primary-dark);
-}
-
-.hidden {
-    display: none;
-}
-
-.feedback-thanks {
-    padding: var(--spacing-md);
-    background-color: rgba(76, 175, 80, 0.1);
-    border-radius: var(--border-radius);
-    color: var(--accent-color);
-    font-weight: 500;
-}
-
-/* Search highlighting */
-.search-highlight {
-    border-left: 3px solid var(--primary-color);
-    padding-left: var(--spacing-sm);
-    background-color: var(--hover-bg);
-    animation: highlight 1s ease;
-}
-
-@keyframes highlight {
-    0% { background-color: var(--primary-color); }
-    100% { background-color: var(--hover-bg); }
-}
-
-/* === Responsive Design === */
-@media (max-width: 1100px) {
-    :root {
-        --sidebar-width: 250px;
-    }
+    # Enable faulthandler with output directed to this file
+    faulthandler.enable(file=crash_file)
     
-    .content {
-        padding: var(--spacing-lg);
-    }
-}
+    # Also register for SIGUSR1 for manual dump trigger
+    faulthandler.register(signal.SIGUSR1, file=crash_file)
+    
+    logging.info(f"Faulthandler enabled, crash logs will be written to {crash_log_path}")
+    logging.info(f"Process ID: {os.getpid()}")
+    
+    # Your web application initialization and serving code here
+    
+except Exception as e:
+    logging.error(f"Failed to set up faulthandler: {e}")
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-@media (max-width: 900px) {
-    .sidebar {
-        transform: translateX(-100%);
-        z-index: 1000;
-    }
-    
-    .sidebar.mobile-visible {
-        transform: translateX(0);
-    }
-    
-    .content {
-        margin-left: 0;
-        padding: var(--spacing-md);
-    }
-    
-    .mobile-toc-toggle {
-        display: block;
-    }
-    
-    .back-to-top {
-        right: 15px;
-        bottom: 15px;
-    }
-    
-    .theme-toggle {
-        right: 15px;
-        top: 15px;
-    }
-    
-    .features-grid, 
-    .resources-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    }
-}
+            <section id="common-issues" class="content-section">
+                <h2>Common Issues</h2>
+                
+                <div class="issue-card">
+                    <div class="issue-header">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>No tracebacks displayed despite enabling faulthandler</h3>
+                    </div>
+                    <div class="issue-content">
+                        <p>This might happen if:</p>
+                        <ul>
+                            <li>Your program is redirecting stderr to a file or pipe</li>
+                            <li>The crash is happening in a C extension that doesn't give Python a chance to handle it</li>
+                            <li>You're on Windows using certain console configurations</li>
+                        </ul>
+                        <div class="solution">
+                            <h4>Solution:</h4>
+                            <p>Try enabling faulthandler with a specific file output:</p>
+                            <pre><code>with open('crash.log', 'w') as f:
+    faulthandler.enable(file=f)</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-header">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Timeout feature doesn't work</h3>
+                    </div>
+                    <div class="issue-content">
+                        <p>The timeout feature might not work if:</p>
+                        <ul>
+                            <li>You're on Windows (the feature uses SIGALRM which isn't available on Windows)</li>
+                            <li>Your code is blocking signals</li>
+                            <li>The Python interpreter is completely frozen</li>
+                        </ul>
+                        <div class="solution">
+                            <h4>Solution:</h4>
+                            <p>On Windows, use an alternative approach:</p>
+                            <pre><code>import threading
+import faulthandler
+import time
+import os
+import signal
 
-@media (max-width: 600px) {
-    :root {
-        --spacing-lg: 1.5rem;
-        --spacing-md: 1rem;
-        --spacing-xl: 2rem;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-    }
-    
-    h3 {
-        font-size: 1.2rem;
-    }
-    
-    .content {
-        padding: var(--spacing-sm);
-    }
-    
-    .features-grid, 
-    .resources-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .tab-button {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.9rem;
-    }
-}
+def dump_traceback():
+    print("Dumping traceback...")
+    # On Windows, we can use os.kill with signal.CTRL_BREAK_EVENT
+    if os.name == 'nt':
+        os.kill(os.getpid(), signal.CTRL_BREAK_EVENT)
+    else:
+        # On Unix, we can use SIGUSR1 if registered
+        os.kill(os.getpid(), signal.SIGUSR1)
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
+# Enable faulthandler
+faulthandler.enable()
+
+# On Unix systems, register SIGUSR1
+if os.name != 'nt':
+    faulthandler.register(signal.SIGUSR1)
+
+# Set up a timer to trigger the traceback dump
+timer = threading.Timer(30.0, dump_traceback)
+timer.start()
+
+# Your potentially deadlocking code here
+# ...</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-header">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Incomplete tracebacks in multithreaded applications</h3>
+                    </div>
+                    <div class="issue-content">
+                        <p>By default, faulthandler shows the traceback only for the thread where the fatal error occurred.</p>
+                        <div class="solution">
+                            <h4>Solution:</h4>
+                            <p>Make sure to enable all_threads when initializing faulthandler:</p>
+                            <pre><code>faulthandler.enable(file=sys.stderr, all_threads=True)</code></pre>
+                            <p>This will ensure you get tracebacks for all threads, not just the one that crashed.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="api-reference" class="content-section">
+                <h2>API Reference</h2>
+                
+                <div class="table-container">
+                    <table class="api-table">
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>enable(file=sys.stderr, all_threads=True)</code></td>
+                                <td>
+                                    <p>Enable the fault handler, with optional output file and threading support.</p>
+                                    <ul>
+                                        <li><strong>file</strong>: An open file-like object where tracebacks are written to (default: sys.stderr)</li>
+                                        <li><strong>all_threads</strong>: If True, display tracebacks for all threads (default: True)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>disable()</code></td>
+                                <td>Disable the fault handler.</td>
+                            </tr>
+                            <tr>
+                                <td><code>is_enabled()</code></td>
+                                <td>Check if the fault handler is enabled. Returns a bool.</td>
+                            </tr>
+                            <tr>
+                                <td><code>dump_traceback(file=sys.stderr, all_threads=True)</code></td>
+                                <td>
+                                    <p>Explicitly dump the current traceback.</p>
+                                    <ul>
+                                        <li><strong>file</strong>: An open file-like object where tracebacks are written to (default: sys.stderr)</li>
+                                        <li><strong>all_threads</strong>: If True, display tracebacks for all threads (default: True)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>dump_traceback_later(timeout, repeat=False, file=sys.stderr, exit=False)</code></td>
+                                <td>
+                                    <p>Dump the tracebacks of all threads after a timeout.</p>
+                                    <ul>
+                                        <li><strong>timeout</strong>: Delay in seconds before dumping tracebacks</li>
+                                        <li><strong>repeat</strong>: If True, repeat dump every timeout seconds (default: False)</li>
+                                        <li><strong>file</strong>: An open file-like object where tracebacks are written to (default: sys.stderr)</li>
+                                        <li><strong>exit</strong>: If True, exit the process after dumping tracebacks (default: False)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>cancel_dump_traceback_later()</code></td>
+                                <td>Cancel the previous dump_traceback_later() call.</td>
+                            </tr>
+                            <tr>
+                                <td><code>register(signum, file=sys.stderr, all_threads=True, chain=False)</code></td>
+                                <td>
+                                    <p>Register a handler for the given signal to dump tracebacks.</p>
+                                    <ul>
+                                        <li><strong>signum</strong>: Signal number (e.g., signal.SIGUSR1)</li>
+                                        <li><strong>file</strong>: An open file-like object where tracebacks are written to (default: sys.stderr)</li>
+                                        <li><strong>all_threads</strong>: If True, display tracebacks for all threads (default: True)</li>
+                                        <li><strong>chain</strong>: If True, call the previous signal handler after (default: False)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>unregister(signum)</code></td>
+                                <td>
+                                    <p>Unregister a handler for the given signal.</p>
+                                    <ul>
+                                        <li><strong>signum</strong>: Signal number (e.g., signal.SIGUSR1)</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="resources" class="content-section">
+                <h2>Additional Resources</h2>
+                
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Official Documentation</h3>
+                        <p>Comprehensive guide covering all functions and features of the module.</p>
+                        <a href="https://docs.python.org/3/library/faulthandler.html" class="resource-link" target="_blank">
+                            <span>View Resource</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h3>Debugging Python Crashes</h3>
+                        <p>Learn how faulthandler.enable() can help debug scripts that crash Python itself.</p>
+                        <a href="https://dev.to/clpsplug/how-do-you-debug-a-python-script-that-crashes-python-itself-4hpc" class="resource-link" target="_blank">
+                            <span>View Resource</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Debugging a Deadlock</h3>
+                        <p>In-depth article showing how to use faulthandler to debug deadlock situations.</p>
+                        <a href="https://dafoster.net/articles/2023/10/20/debugging-a-deadlock-in-python/" class="resource-link" target="_blank">
+                            <span>View Resource</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Python Debugging Workshop</h3>
+                        <p>Comprehensive video tutorial covering debugging techniques including faulthandler.</p>
+                        <a href="https://www.youtube.com/watch?v=5AYIe-3cD-s" class="resource-link" target="_blank">
+                            <span>View Resource</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="feedback-section">
+                    <h3>Was this documentation helpful?</h3>
+                    <div class="feedback-buttons">
+                        <button id="feedback-yes" class="feedback-button">
+                            <i class="fas fa-thumbs-up"></i> Yes
+                        </button>
+                        <button id="feedback-no" class="feedback-button">
+                            <i class="fas fa-thumbs-down"></i> No
+                        </button>
+                    </div>
+                    <div id="feedback-form" class="feedback-form hidden">
+                        <textarea placeholder="How can we improve this documentation?"></textarea>
+                        <button class="submit-feedback">Send Feedback</button>
+                    </div>
+                    <div id="feedback-thanks" class="feedback-thanks hidden">
+                        Thank you for your feedback!
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-theme');
+        }
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Navigation Highlighting
+        const sections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeLink = document.querySelector(`.sidebar-nav a[href="#${entry.target.id}"]`);
+                    if (activeLink) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Copy Code Buttons
+        const copyButtons = document.querySelectorAll('.copy-button');
+        
+        copyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const codeId = button.getAttribute('data-clipboard-target');
+                const codeElement = document.querySelector(codeId);
+                
+                if (codeElement) {
+                    navigator.clipboard.writeText(codeElement.textContent).then(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                        }, 2000);
+                    });
+                }
+            });
+        });
+        
+        // Submenu Toggles
+        const submenuLinks = document.querySelectorAll('.has-submenu');
+        
+        submenuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                link.classList.toggle('active');
+                const submenu = link.nextElementSibling;
+                submenu.style.maxHeight = link.classList.contains('active') ? 
+                    submenu.scrollHeight + 'px' : '0';
+            });
+        });
+        
+        // Collapsible Sections
+        const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
+        
+        collapsibleHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                header.classList.toggle('active');
+                content.style.maxHeight = header.classList.contains('active') ? 
+                    content.scrollHeight + 'px' : '0';
+                
+                const icon = header.querySelector('i');
+                if (header.classList.contains('active')) {
+                    icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                } else {
+                    icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                }
+            });
+        });
+        
+        // Tab Switching
+        const tabButtons = document.querySelectorAll('.tab-button');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Set active tab
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+        });
+        
+        // Mobile TOC Toggle
+        const mobileToggle = document.getElementById('show-toc');
+        const sidebar = document.querySelector('.sidebar');
+        
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('mobile-visible');
+        });
+        
+        // Search Functionality
+        const searchInput = document.getElementById('search-input');
+        const searchClear = document.getElementById('search-clear');
+        
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            
+            if (query.length > 0) {
+                searchClear.style.display = 'block';
+            } else {
+                searchClear.style.display = 'none';
+            }
+            
+            // Simple content search
+            document.querySelectorAll('.content-section').forEach(section => {
+                const text = section.textContent.toLowerCase();
+                const match = text.includes(query);
+                
+                // Highlight matches
+                if (match && query.length > 2) {
+                    section.classList.add('search-highlight');
+                } else {
+                    section.classList.remove('search-highlight');
+                }
+            });
+        });
+        
+        searchClear.addEventListener('click', () => {
+            searchInput.value = '';
+            searchClear.style.display = 'none';
+            
+            // Clear highlights
+            document.querySelectorAll('.search-highlight').forEach(el => {
+                el.classList.remove('search-highlight');
+            });
+        });
+        
+        // Feedback Form
+        const feedbackYes = document.getElementById('feedback-yes');
+        const feedbackNo = document.getElementById('feedback-no');
+        const feedbackForm = document.getElementById('feedback-form');
+        const feedbackThanks = document.getElementById('feedback-thanks');
+        const submitFeedback = document.querySelector('.submit-feedback');
+        
+        feedbackYes.addEventListener('click', () => {
+            feedbackForm.classList.add('hidden');
+            feedbackThanks.classList.remove('hidden');
+        });
+        
+        feedbackNo.addEventListener('click', () => {
+            feedbackForm.classList.remove('hidden');
+        });
+        
+        submitFeedback.addEventListener('click', () => {
+            feedbackForm.classList.add('hidden');
+            feedbackThanks.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
